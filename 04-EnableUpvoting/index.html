@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>My Angular App!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="helloList" ng-controller="MainCtrl">
+    <div>
+      <div ng-repeat="post in posts">
+        {{post}}
+      </div>
+
+       <div ng-repeat="item in items">
+        {{item.title}} - upvotes: {{item.upvotes}}
+      </div>
+
+      <div ng-repeat="item in items | orderBy: '-upvotes'">
+        {{item.title}} - upvotes: {{item.upvotes}}
+      </div>
+
+      <div ng-repeat="item in items | orderBy:'-upvotes'">
+        <span ng-click="incrementUpvotes(item)">^</span>
+        {{item.title}} - upvotes: {{item.upvotes}}
+      </div>
+      <button ng-click="addPost()">Post</button>
+      <form ng-submit="addItem()">
+        <input type="text" ng-model="title"></input>
+        <button type="submit">Item</button>
+      </form>
+    </div>
+  </body>
+</html>
